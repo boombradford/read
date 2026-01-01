@@ -5,7 +5,7 @@ import { Article } from '@/lib/types';
 interface ArticleCardProps {
     article: Article & { feedTitle: string };
     index: number;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = ({ article, index, onClick }) => {
