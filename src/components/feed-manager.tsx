@@ -89,7 +89,7 @@ export const FeedManager = () => {
                                 className="apple-modal w-full sm:max-w-xl rounded-t-3xl sm:rounded-3xl"
                                 onClick={(e) => e.stopPropagation()}
                             >
-                                <div className="p-6 border-b border-[var(--border-color)] flex justify-between items-center sticky top-0 glass-card z-10 rounded-t-3xl sm:rounded-t-2xl">
+                                <div className="p-6 border-b border-[var(--border-color)] flex justify-between items-center sticky top-0 bg-[var(--color-bg-elevated)] z-10 rounded-t-3xl sm:rounded-t-2xl backdrop-blur-xl">
                                     <div className="flex items-center gap-3">
                                         <Rss className="w-6 h-6 text-[var(--color-accent)]" />
                                         <h2 id="feed-manager-title" className="type-title text-[var(--color-text-primary)]">Feeds</h2>
@@ -143,7 +143,7 @@ export const FeedManager = () => {
                                             <p className="type-subheadline text-[var(--color-text-tertiary)] text-center py-10" role="status">No feeds yet</p>
                                         ) : (
                                             subscriptions.map((sub) => (
-                                                <div key={sub.id} className="glass-card flex items-center justify-between p-4 hover:border-[var(--border-color)] transition-all group" role="listitem">
+                                                <div key={sub.id} className="flex items-center justify-between p-4 bg-[var(--color-bg-tertiary)] rounded-xl border border-[var(--border-subtle)] hover:border-[var(--border-color)] transition-all group" role="listitem">
                                                     <div className="flex items-center gap-3 flex-1 min-w-0 mr-3">
                                                         <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center">
                                                             <Rss className="w-5 h-5 text-[var(--color-accent)]" />
@@ -155,7 +155,7 @@ export const FeedManager = () => {
                                                     </div>
                                                     <button
                                                         onClick={() => removeSubscription(sub.id)}
-                                                        className="text-[var(--color-text-tertiary)] hover:text-[var(--color-error)] px-3 py-2 transition-all sm:opacity-0 sm:group-hover:opacity-100 min-h-[44px] rounded-lg hover:bg-[var(--color-error)]/10 flex items-center gap-2"
+                                                        className="text-[var(--color-text-tertiary)] hover:text-[var(--color-error)] px-3 py-2 transition-all sm:opacity-0 sm:group-hover:opacity-100 min-h-[44px] rounded-lg hover:bg-[var(--color-error)]/10 flex items-center gap-2 flex-shrink-0"
                                                         aria-label={`Remove ${sub.title} feed`}
                                                     >
                                                         <Trash2 className="w-4 h-4" />
