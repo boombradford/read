@@ -52,9 +52,8 @@ export const BriefingView = () => {
                     <button
                         onClick={generateBriefing}
                         disabled={loading}
-                        className="apple-button-primary disabled:opacity-30 flex items-center gap-2"
+                        className="apple-button-primary disabled:opacity-30"
                     >
-                        <Sparkles className="w-5 h-5" />
                         {loading ? 'Generating...' : 'Generate Briefing'}
                     </button>
                     {error && (
