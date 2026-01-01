@@ -13,12 +13,24 @@ export async function GET(request: Request) {
 
     try {
         const feed = await parser.parseURL(url);
+
+        // Validate and filter items with valid URLs
+        const validItems = feed.items.filter((item) => {
+            if (!item.link) return false;
+            try {
+                new URL(item.link);
+                return true;
+            } catch {
+                return false;
+            }
+        });
+
         // Return cleaned data
         const cleanedFeed = {
             title: feed.title,
             description: feed.description,
             link: feed.link,
-            items: feed.items.map((item) => ({
+            items: validItems.map((item) => ({
                 title: item.title,
                 link: item.link,
                 pubDate: item.pubDate,

@@ -31,6 +31,19 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ article, index, onClic
             return;
         }
 
+        // Validate URL before attempting to fetch
+        if (!article.link) {
+            setError('Article has no valid link');
+            return;
+        }
+
+        try {
+            new URL(article.link);
+        } catch {
+            setError('Article has an invalid URL');
+            return;
+        }
+
         setLoading(true);
         setError(null);
 
@@ -117,15 +130,17 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ article, index, onClic
                                 </>
                             )}
                         </button>
-                        <a
-                            href={article.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="type-subheadline text-[var(--color-accent)] hover:opacity-70 transition-opacity inline-flex items-center gap-2 group"
-                        >
-                            Read article
-                            <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                        </a>
+                        {article.link && (
+                            <a
+                                href={article.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="type-subheadline text-[var(--color-accent)] hover:opacity-70 transition-opacity inline-flex items-center gap-2 group"
+                            >
+                                Read article
+                                <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                            </a>
+                        )}
                     </div>
 
                     {error && (
