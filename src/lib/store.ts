@@ -68,8 +68,9 @@ export const useFeedStore = create<FeedStore>()(
             },
         }),
         {
-            name: 'rss-feed-storage-v2', // Versioned to force update to new defaults
-            partialize: (state) => ({ subscriptions: state.subscriptions }), // Only persist subscriptions
+            name: 'rss-feed-storage-v2',
+            partialize: (state) => ({ subscriptions: state.subscriptions }),
+            skipHydration: false,
         }
     )
 );
