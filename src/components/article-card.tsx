@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Article } from '@/lib/types';
+import { ExternalLink, Calendar, Hash } from 'lucide-react';
 
 interface ArticleCardProps {
     article: Article & { feedTitle: string };
@@ -24,12 +25,14 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ article, index, onClic
         >
             <div className="p-6 flex flex-col h-full">
                 <div className="flex items-center gap-2 mb-4">
+                    <Hash className="w-3.5 h-3.5 text-[var(--color-accent)]" />
                     <span className="type-caption text-[var(--color-text-tertiary)]">
                         {article.feedTitle}
                     </span>
                     {article.isoDate && (
                         <>
                             <span className="w-1 h-1 rounded-full bg-[var(--color-text-tertiary)] opacity-40" />
+                            <Calendar className="w-3.5 h-3.5 text-[var(--color-text-tertiary)]" />
                             <span className="type-caption text-[var(--color-text-tertiary)]">
                                 {new Date(article.isoDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
                             </span>
@@ -50,9 +53,10 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ article, index, onClic
                         href={article.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="type-subheadline text-[var(--color-accent)] hover:opacity-70 transition-opacity inline-block"
+                        className="type-subheadline text-[var(--color-accent)] hover:opacity-70 transition-opacity inline-flex items-center gap-2 group"
                     >
                         Read article
+                        <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </a>
                 </div>
             </div>

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useFeedStore } from '@/lib/store';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Settings, X, Plus, Trash2, Rss } from 'lucide-react';
 
 const ModalPortal = ({ children }: { children: React.ReactNode }) => {
     const [mounted, setMounted] = useState(false);
@@ -58,13 +59,13 @@ export const FeedManager = () => {
                 {subscriptions.length > 0 && (
                     <button
                         onClick={() => setIsOpen(true)}
-                        className="fixed bottom-6 right-6 z-[9999] glass-effect text-[var(--color-text-primary)] hover:bg-[var(--color-bg-tertiary)] rounded-full shadow-lg transition-all type-subheadline font-medium min-h-[56px] min-w-[56px] px-6 py-3 md:min-h-0 md:min-w-0"
+                        className="fixed bottom-6 right-6 z-[9999] glass-effect text-[var(--color-text-primary)] hover:bg-[var(--color-bg-tertiary)] rounded-full shadow-lg transition-all type-subheadline font-medium min-h-[56px] min-w-[56px] px-6 py-3 md:min-h-0 md:min-w-0 flex items-center gap-2"
                         aria-label="Manage RSS feeds"
                         aria-haspopup="dialog"
                         aria-expanded={isOpen}
                     >
+                        <Settings className="w-5 h-5" />
                         <span className="hidden sm:inline">Manage Feeds</span>
-                        <span className="sm:hidden text-lg">⚙️</span>
                     </button>
                 )}
 
@@ -88,14 +89,17 @@ export const FeedManager = () => {
                                 className="apple-modal w-full sm:max-w-xl rounded-t-3xl sm:rounded-3xl"
                                 onClick={(e) => e.stopPropagation()}
                             >
-                                <div className="p-6 border-b border-[var(--border-color)] flex justify-between items-center sticky top-0 bg-[var(--color-bg-elevated)] z-10 rounded-t-3xl sm:rounded-t-2xl">
-                                    <h2 id="feed-manager-title" className="type-title text-[var(--color-text-primary)]">Feeds</h2>
+                                <div className="p-6 border-b border-[var(--border-color)] flex justify-between items-center sticky top-0 glass-card z-10 rounded-t-3xl sm:rounded-t-2xl">
+                                    <div className="flex items-center gap-3">
+                                        <Rss className="w-6 h-6 text-[var(--color-accent)]" />
+                                        <h2 id="feed-manager-title" className="type-title text-[var(--color-text-primary)]">Feeds</h2>
+                                    </div>
                                     <button
                                         onClick={() => setIsOpen(false)}
                                         className="apple-button-secondary"
                                         aria-label="Close feed manager"
                                     >
-                                        Close
+                                        <X className="w-5 h-5" />
                                     </button>
                                 </div>
 
@@ -120,9 +124,10 @@ export const FeedManager = () => {
                                             <button
                                                 type="submit"
                                                 disabled={loading || !url}
-                                                className="apple-button-primary sm:min-w-[100px]"
+                                                className="apple-button-primary sm:min-w-[100px] flex items-center gap-2"
                                                 aria-label={loading ? "Adding feed" : "Add feed"}
                                             >
+                                                <Plus className="w-4 h-4" />
                                                 {loading ? 'Adding...' : 'Add'}
                                             </button>
                                         </div>
@@ -138,17 +143,23 @@ export const FeedManager = () => {
                                             <p className="type-subheadline text-[var(--color-text-tertiary)] text-center py-10" role="status">No feeds yet</p>
                                         ) : (
                                             subscriptions.map((sub) => (
-                                                <div key={sub.id} className="flex items-center justify-between p-4 bg-[var(--color-bg-tertiary)] rounded-xl border border-[var(--border-subtle)] hover:border-[var(--border-color)] transition-all group" role="listitem">
-                                                    <div className="flex-1 min-w-0 mr-3">
-                                                        <h4 className="type-subheadline font-medium text-[var(--color-text-primary)] truncate mb-1">{sub.title}</h4>
-                                                        <p className="type-footnote text-[var(--color-text-tertiary)] truncate">{sub.url}</p>
+                                                <div key={sub.id} className="glass-card flex items-center justify-between p-4 hover:border-[var(--border-color)] transition-all group" role="listitem">
+                                                    <div className="flex items-center gap-3 flex-1 min-w-0 mr-3">
+                                                        <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center">
+                                                            <Rss className="w-5 h-5 text-[var(--color-accent)]" />
+                                                        </div>
+                                                        <div className="flex-1 min-w-0">
+                                                            <h4 className="type-subheadline font-medium text-[var(--color-text-primary)] truncate mb-1">{sub.title}</h4>
+                                                            <p className="type-footnote text-[var(--color-text-tertiary)] truncate">{sub.url}</p>
+                                                        </div>
                                                     </div>
                                                     <button
                                                         onClick={() => removeSubscription(sub.id)}
-                                                        className="text-[var(--color-text-tertiary)] hover:text-[var(--color-error)] px-4 py-2 transition-colors sm:opacity-0 sm:group-hover:opacity-100 type-footnote min-h-[44px] rounded-lg hover:bg-[var(--color-error)]/10"
+                                                        className="text-[var(--color-text-tertiary)] hover:text-[var(--color-error)] px-3 py-2 transition-all sm:opacity-0 sm:group-hover:opacity-100 min-h-[44px] rounded-lg hover:bg-[var(--color-error)]/10 flex items-center gap-2"
                                                         aria-label={`Remove ${sub.title} feed`}
                                                     >
-                                                        Remove
+                                                        <Trash2 className="w-4 h-4" />
+                                                        <span className="hidden md:inline type-footnote">Remove</span>
                                                     </button>
                                                 </div>
                                             ))

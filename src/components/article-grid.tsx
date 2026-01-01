@@ -6,6 +6,7 @@ import { useFeedStore } from '@/lib/store';
 import { ArticleCard } from './article-card';
 import { ArticleDetail } from './article-detail';
 import { Article } from '@/lib/types';
+import { RefreshCw, Plus, Rss } from 'lucide-react';
 
 type ExtendedArticle = Article & { feedTitle: string };
 
@@ -121,8 +122,9 @@ export const ArticleGrid = () => {
                             <button
                                 type="submit"
                                 disabled={addingFeed || !feedUrl}
-                                className="apple-button-primary min-w-[100px]"
+                                className="apple-button-primary min-w-[100px] flex items-center gap-2"
                             >
+                                <Plus className="w-4 h-4" />
                                 {addingFeed ? 'Adding...' : 'Add Feed'}
                             </button>
                         </div>
@@ -180,18 +182,24 @@ export const ArticleGrid = () => {
     return (
         <div className="max-w-[1400px] mx-auto px-6 py-8">
             <header className="flex justify-between items-center mb-10 pb-6 border-b border-[var(--border-subtle)]">
-                <div>
-                    <h1 className="type-title text-[var(--color-text-primary)] mb-1">Recent</h1>
-                    <p className="type-footnote text-[var(--color-text-secondary)]">
-                        {subscriptions.length} {subscriptions.length === 1 ? 'source' : 'sources'}
-                    </p>
+                <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-xl bg-[var(--color-accent)]/10 flex items-center justify-center glass-card">
+                        <Rss className="w-6 h-6 text-[var(--color-accent)]" />
+                    </div>
+                    <div>
+                        <h1 className="type-title text-[var(--color-text-primary)] mb-1">Recent</h1>
+                        <p className="type-footnote text-[var(--color-text-secondary)]">
+                            {subscriptions.length} {subscriptions.length === 1 ? 'source' : 'sources'}
+                        </p>
+                    </div>
                 </div>
                 <button
                     onClick={handleRefresh}
                     disabled={refreshing}
-                    className={`px-4 py-2 rounded-lg transition-all type-subheadline text-[var(--color-accent)] hover:bg-[var(--color-bg-secondary)] ${refreshing ? 'opacity-50' : ''}`}
+                    className={`px-4 py-2 rounded-lg transition-all type-subheadline text-[var(--color-accent)] hover:bg-[var(--color-bg-secondary)] flex items-center gap-2 ${refreshing ? 'opacity-50' : ''}`}
                 >
-                    {refreshing ? 'Refreshing...' : 'Refresh'}
+                    <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
+                    <span className="hidden sm:inline">{refreshing ? 'Refreshing...' : 'Refresh'}</span>
                 </button>
             </header>
 
