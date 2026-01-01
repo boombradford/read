@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useFeedStore } from '@/lib/store';
-import { Sparkles, Lightbulb } from 'lucide-react';
+import { Lightbulb } from 'lucide-react';
 
 interface Briefing {
     greeting: string;
@@ -70,8 +70,7 @@ export const BriefingView = () => {
                             className="w-full max-w-3xl mx-auto p-10 md:p-14 glass-card"
                         >
                             <div className="text-center mb-10">
-                                <div className="mb-4 flex items-center justify-center gap-2">
-                                    <Sparkles className="w-5 h-5 text-[var(--color-accent)]" />
+                                <div className="mb-3">
                                     <span className="type-caption text-[var(--color-text-tertiary)]">
                                         {new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' })}
                                     </span>

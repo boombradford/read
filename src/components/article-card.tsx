@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Article } from '@/lib/types';
-import { ExternalLink, Calendar, Hash, Sparkles, Loader2, ChevronDown, ChevronUp } from 'lucide-react';
+import { ExternalLink, Calendar, Hash, Loader2, ChevronDown, ChevronUp } from 'lucide-react';
 
 interface ArticleCardProps {
     article: Article & { feedTitle: string };
@@ -113,7 +113,6 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ article, index, onClic
                                 </>
                             ) : (
                                 <>
-                                    <Sparkles className="w-4 h-4" />
                                     Summarize
                                 </>
                             )}
