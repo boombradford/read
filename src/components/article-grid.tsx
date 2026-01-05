@@ -81,7 +81,7 @@ export const ArticleGrid = () => {
 
     if (subscriptions.length === 0) {
         return (
-            <div className="max-w-2xl mx-auto px-6 py-32 md:py-40">
+            <div className="max-w-2xl mx-auto px-4 md:px-6 py-20 md:py-40">
                 <div className="text-center">
                     <motion.h1
                         initial={{ opacity: 0, y: 10 }}
@@ -180,7 +180,7 @@ export const ArticleGrid = () => {
     });
 
     return (
-        <div className="max-w-[1400px] mx-auto px-6 py-8">
+        <div className="max-w-[1400px] mx-auto px-3 md:px-6 py-6 md:py-8">
             <header className="flex justify-between items-center mb-10 pb-6 border-b border-[var(--border-subtle)]">
                 <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-xl bg-[var(--color-accent)]/10 flex items-center justify-center glass-card">
@@ -203,9 +203,9 @@ export const ArticleGrid = () => {
                 </button>
             </header>
 
-            <div className="flex gap-6">
+            <div className="flex gap-4 md:gap-6">
                 {columnBuckets.map((bucket, colIndex) => (
-                    <div key={colIndex} className="flex-1 flex flex-col gap-6">
+                    <div key={colIndex} className="flex-1 flex flex-col gap-4 md:gap-6">
                         {bucket.map((article, index) => (
                             <ArticleCard
                                 key={`${article.link}-${index}`}

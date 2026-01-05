@@ -46,7 +46,7 @@ export const BriefingView = () => {
     if (articles.length === 0) return null;
 
     return (
-        <div className="mb-16">
+        <div className="mb-10 md:mb-16">
             {!generated ? (
                 <div className="flex flex-col items-center justify-center gap-3">
                     <button
@@ -67,7 +67,7 @@ export const BriefingView = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, ease: [0.28, 0, 0.21, 1] }}
-                            className="w-full max-w-3xl mx-auto p-10 md:p-14 glass-card"
+                            className="w-full max-w-3xl mx-auto p-6 md:p-14 glass-card"
                         >
                             <div className="text-center mb-10">
                                 <div className="mb-3">

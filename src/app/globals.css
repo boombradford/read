@@ -98,9 +98,9 @@
     }
   }
 
-  /* Typography Scale - SF Pro inspired */
+  /* Typography Scale - SF Pro inspired with mobile responsiveness */
   .type-display {
-    font-size: 56px;
+    font-size: clamp(32px, 8vw, 56px);
     line-height: 1.07143;
     font-weight: 600;
     letter-spacing: -0.005em;
@@ -111,49 +111,49 @@
   }
 
   .type-title-large {
-    font-size: 34px;
+    font-size: clamp(24px, 5vw, 34px);
     line-height: 1.11765;
     font-weight: 600;
     letter-spacing: -0.003em;
   }
 
   .type-title {
-    font-size: 28px;
+    font-size: clamp(22px, 4vw, 28px);
     line-height: 1.14286;
     font-weight: 600;
     letter-spacing: -0.003em;
   }
 
   .type-headline {
-    font-size: 20px;
-    line-height: 1.2;
+    font-size: clamp(17px, 3vw, 20px);
+    line-height: 1.25;
     font-weight: 600;
     letter-spacing: -0.003em;
   }
 
   .type-body {
-    font-size: 17px;
-    line-height: 1.47059;
+    font-size: clamp(15px, 2.5vw, 17px);
+    line-height: 1.5;
     font-weight: 400;
     letter-spacing: -0.003em;
   }
 
   .type-subheadline {
-    font-size: 15px;
-    line-height: 1.33334;
+    font-size: clamp(14px, 2vw, 15px);
+    line-height: 1.4;
     font-weight: 400;
     letter-spacing: -0.003em;
   }
 
   .type-footnote {
-    font-size: 13px;
+    font-size: clamp(12px, 1.8vw, 13px);
     line-height: 1.38462;
     font-weight: 400;
     letter-spacing: -0.001em;
   }
 
   .type-caption {
-    font-size: 11px;
+    font-size: clamp(10px, 1.5vw, 11px);
     line-height: 1.27273;
     font-weight: 500;
     letter-spacing: 0.06em;
@@ -298,7 +298,8 @@
     border-radius: 12px;
     padding: 12px 16px;
     min-height: 44px;
-    font-size: 16px; /* iOS prevents zoom on focus when >= 16px */
+    font-size: 16px;
+    /* iOS prevents zoom on focus when >= 16px */
     -webkit-appearance: none;
     appearance: none;
   }

@@ -82,7 +82,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ article, index, onClic
             }}
             className="apple-card group cursor-pointer"
         >
-            <div className="p-6 flex flex-col h-full">
+            <div className="p-4 md:p-6 flex flex-col h-full">
                 <div className="flex items-center gap-2 mb-4">
                     <Hash className="w-3.5 h-3.5 text-[var(--color-accent)]" />
                     <span className="type-caption text-[var(--color-text-tertiary)]">

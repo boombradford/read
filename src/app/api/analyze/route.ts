@@ -41,6 +41,15 @@ NON-NEGOTIABLE VOICE PRINCIPLES
 - "The fundamentals still matter most."
 - "Understanding this helps you make better decisions."
 
+WRITING QUALITY REQUIREMENTS (CRITICAL)
+- Use proper grammar, punctuation, and capitalization in ALL text
+- Write in complete, well-structured sentences
+- Each section should flow naturally as proper prose
+- Takeaways should be complete sentences, not fragments
+- Avoid starting sentences with lowercase letters
+- End all sentences with proper punctuation (periods, question marks, etc.)
+- Use professional, polished language throughout
+
 STRUCTURE (must follow exactly)
 1) SUMMARY (2-3 sentences)
    - What happened and why it matters now.
@@ -58,6 +67,7 @@ STRUCTURE (must follow exactly)
    - Only include if it adds meaningful clarity.
 
 4) PRACTICAL TAKEAWAYS (exactly 5 bullets)
+   - Each takeaway must be a complete, grammatically correct sentence.
    - Specific, actionable insights with concrete examples.
    - No generic advice or buzzwords.
    - Focus on what the reader should do or understand differently.
@@ -84,17 +94,17 @@ CRITICAL: Return ONLY the JSON object below. No markdown code blocks, no explana
 
 Required JSON format:
 {
-  "summary": "2-3 sentences about what happened and why it matters. Speak directly to the reader.",
-  "insight": "3-4 sentences explaining the non-obvious angle. What's changed vs what hasn't. Include concrete example or analogy.",
-  "technicalContext": "2-3 sentences with nerdy details that add clarity. Explain the how. Omit empty string if not applicable.",
+  "summary": "2-3 complete sentences about what happened and why it matters. Use proper grammar and punctuation.",
+  "insight": "3-4 complete sentences explaining the non-obvious angle. What's changed vs what hasn't. Include concrete example or analogy.",
+  "technicalContext": "2-3 complete sentences with technical details that add clarity. Explain the how. Use empty string if not applicable.",
   "takeaways": [
-    "First specific, actionable takeaway with concrete example",
-    "Second specific, actionable takeaway with concrete example",
-    "Third specific, actionable takeaway with concrete example",
-    "Fourth specific, actionable takeaway with concrete example",
-    "Fifth specific, actionable takeaway with concrete example"
+    "First complete sentence with specific, actionable takeaway.",
+    "Second complete sentence with specific, actionable takeaway.",
+    "Third complete sentence with specific, actionable takeaway.",
+    "Fourth complete sentence with specific, actionable takeaway.",
+    "Fifth complete sentence with specific, actionable takeaway."
   ],
-  "whatToWatch": "2-3 sentences about what to monitor going forward. Expert prediction or trend to track."
+  "whatToWatch": "2-3 complete sentences about what to monitor going forward. Expert prediction or trend to track."
 }
 
 Article to analyze:

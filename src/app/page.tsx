@@ -5,7 +5,7 @@ import { ClientProvider } from "@/components/providers";
 
 export default function Home() {
   return (
-    <main className="min-h-screen pb-20 pt-8 px-4">
+    <main className="min-h-screen pb-20 pt-6 md:pt-8 px-3 md:px-4">
       <ClientProvider>
         <div className="max-w-[1600px] mx-auto w-full">
           <BriefingView />

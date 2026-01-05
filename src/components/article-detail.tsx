@@ -64,16 +64,16 @@ export const ArticleDetail: React.FC<ArticleDetailProps> = ({ article, onClose }
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-xl p-4 md:p-8"
+            className="fixed inset-0 z-[100] flex items-end md:items-center justify-center bg-black/70 backdrop-blur-xl p-0 md:p-8"
             onClick={onClose}
         >
             <motion.div
                 layoutId={`card-${article.link}`}
-                className="w-full max-w-3xl max-h-[90vh] bg-[var(--color-bg-elevated)] border border-[var(--border-strong)] rounded-2xl shadow-2xl overflow-hidden flex flex-col"
+                className="w-full md:max-w-3xl max-h-[95vh] md:max-h-[90vh] bg-[var(--color-bg-elevated)] border-t md:border border-[var(--border-strong)] rounded-t-2xl md:rounded-2xl shadow-2xl overflow-hidden flex flex-col"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Header */}
-                <div className="p-6 border-b border-[var(--border-subtle)] flex justify-between items-start sticky top-0 z-10 bg-[var(--color-bg-elevated)]">
+                <div className="p-4 md:p-6 border-b border-[var(--border-subtle)] flex justify-between items-start sticky top-0 z-10 bg-[var(--color-bg-elevated)]">
                     <div className="pr-8">
                         <div className="flex items-center gap-2 mb-3">
                             <span className="type-caption text-[var(--color-text-tertiary)]">
@@ -97,7 +97,7 @@ export const ArticleDetail: React.FC<ArticleDetailProps> = ({ article, onClose }
                 </div>
 
                 {/* Content */}
-                <div className="flex-1 overflow-y-auto p-6 md:p-8">
+                <div className="flex-1 overflow-y-auto p-4 md:p-8">
                     {/* AI Analysis Section */}
                     <div className="mb-8">
                         {!analysis && !analyzing && (
@@ -196,7 +196,7 @@ export const ArticleDetail: React.FC<ArticleDetailProps> = ({ article, onClose }
                 </div>
 
                 {/* Footer */}
-                <div className="p-5 border-t border-[var(--border-subtle)] bg-[var(--color-bg-elevated)] flex justify-between items-center gap-3">
+                <div className="p-4 md:p-5 border-t border-[var(--border-subtle)] bg-[var(--color-bg-elevated)] flex flex-col md:flex-row justify-between items-stretch md:items-center gap-3">
                     <div className="flex gap-3">
                         <button
                             onClick={handleShare}

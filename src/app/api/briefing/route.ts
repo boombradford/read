@@ -27,13 +27,22 @@ TASK:
 - Identify the most significant trends or patterns
 - Write in a sophisticated, insightful, and concise tone
 
+WRITING QUALITY REQUIREMENTS:
+- Use proper grammar, punctuation, and capitalization throughout
+- Write in complete, well-structured sentences
+- Organize the summary into 2-3 distinct paragraphs, each covering a related theme
+- Use natural paragraph breaks (double newlines) to separate ideas
+- Ensure smooth transitions between sentences and paragraphs
+- Avoid bullet points or lists in the summary - use flowing prose instead
+- The key_takeaway should be a single, punchy sentence with proper punctuation
+
 CRITICAL: Return ONLY the JSON object below. No markdown code blocks, no explanatory text before or after. Just raw JSON with standard double quotes (").
 
 Required JSON format:
 {
   "greeting": "A short creative greeting - 2-4 words (examples: 'Rise and Shine', 'The Wednesday Brief', 'Digital Frontier')",
-  "summary": "A 2-3 paragraph editorial synthesis of the key news. Weave stories into a narrative where possible. Use high-quality, distinctive writing. Be specific about what's happening and why it matters.",
-  "key_takeaway": "One punchy sentence that captures today's tech world mood"
+  "summary": "A 2-3 paragraph editorial synthesis of the key news. Separate paragraphs with double newlines (\\n\\n). Weave stories into a narrative where possible. Use high-quality, distinctive writing with proper grammar and punctuation. Be specific about what's happening and why it matters.",
+  "key_takeaway": "One punchy sentence that captures today's tech world mood. Use proper capitalization and end punctuation."
 }
 
 Headlines and snippets:
