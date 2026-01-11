@@ -34,28 +34,30 @@ export const useFeedStore = create<FeedStore>()(
             setArticles: (articles) => set({ articles }),
             refreshFeeds: async () => {
                 const { subscriptions } = get();
-                const allArticles: (Article & { feedTitle: string })[] = [];
                 const cutoff = Date.now() - (48 * 60 * 60 * 1000); // 48 hours ago
 
-                for (const sub of subscriptions) {
-                    try {
-                        const res = await fetch(`/api/feed?url=${encodeURIComponent(sub.url)}`);
-                        if (res.ok) {
-                            const data = await res.json();
-                            const feedArticles = data.items.map((item: Article) => ({
-                                ...item,
-                                feedTitle: sub.title,
-                            })).filter((item: Article) => {
-                                const itemDate = new Date(item.isoDate || item.pubDate || 0).getTime();
-                                return itemDate > cutoff;
-                            });
-
-                            allArticles.push(...feedArticles);
+                const results = await Promise.all(
+                    subscriptions.map(async (sub) => {
+                        try {
+                            const res = await fetch(`/api/feed?url=${encodeURIComponent(sub.url)}`);
+                            if (res.ok) {
+                                const data = await res.json();
+                                return data.items.map((item: Article) => ({
+                                    ...item,
+                                    feedTitle: sub.title,
+                                })).filter((item: Article) => {
+                                    const itemDate = new Date(item.isoDate || item.pubDate || 0).getTime();
+                                    return itemDate > cutoff;
+                                });
+                            }
+                        } catch (error) {
+                            console.error(`Failed to fetch feed ${sub.url}`, error);
                         }
-                    } catch (error) {
-                        console.error(`Failed to fetch feed ${sub.url}`, error);
-                    }
-                }
+                        return [];
+                    })
+                );
+
+                const allArticles = results.flat();
 
                 // Sort by date descending
                 allArticles.sort((a, b) => {
