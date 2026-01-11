@@ -51,7 +51,10 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ article, index, onClic
             const res = await fetch('/api/summary', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ url: article.link }),
+                body: JSON.stringify({
+                    url: article.link,
+                    content: article.contentSnippet || article.content
+                }),
             });
 
             if (res.ok) {
