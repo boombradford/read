@@ -1,5 +1,11 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+
+export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
+
+export async function GET() {
+    return NextResponse.json({ status: 'API is active' });
+}
 import Anthropic from '@anthropic-ai/sdk';
 import { JSDOM } from 'jsdom';
 import { Readability } from '@mozilla/readability';
