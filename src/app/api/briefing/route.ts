@@ -51,7 +51,7 @@ ${topArticles}
 Return only JSON:`;
 
         const message = await anthropic.messages.create({
-            model: "claude-sonnet-4-5",
+            model: "claude-3-5-sonnet-20240620",
             max_tokens: 1200,
             messages: [{ role: "user", content: prompt }],
         });
@@ -59,31 +59,20 @@ Return only JSON:`;
         const textContent = message.content[0].type === 'text' ? message.content[0].text : '';
         console.log("DEBUG: Raw Briefing Response:", textContent);
 
-        let briefing;
-        try {
-            // Clean markdown formatting and fix curly quotes
-            let cleanContent = textContent
-                .replace(/```json\n?|\n?```/g, '')
-                .replace(/[""]/g, '"')  // Replace curly quotes with straight quotes
-                .replace(/['']/g, "'")  // Replace curly apostrophes
-                .trim();
+        // Clean markdown formatting and fix curly quotes
+        let cleanContent = textContent
+            .replace(/```json\n?|\n?```/g, '')
+            .replace(/[""]/g, '"')  // Replace curly quotes with straight quotes
+            .replace(/['']/g, "'")  // Replace curly apostrophes
+            .trim();
 
-            briefing = JSON.parse(cleanContent);
-        } catch (e) {
-            console.error('Failed to parse AI briefing:', textContent, e);
-            briefing = {
-                greeting: "Good Morning",
-                summary: "Here are your top stories for the day.",
-                key_takeaway: "Stay curious."
-            };
-        }
-
+        const briefing = JSON.parse(cleanContent);
         return NextResponse.json(briefing);
 
     } catch (error) {
         console.error('Error generating briefing:', error);
         return NextResponse.json(
-            { error: 'Failed to generate briefing' },
+            { error: 'Failed to generate briefing', details: error instanceof Error ? error.message : String(error) },
             { status: 500 }
         );
     }
