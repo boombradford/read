@@ -90,8 +90,11 @@ CRITICAL: Return ONLY JSON.
 
         return NextResponse.json(summary);
 
-    } catch (error) {
+    } catch (error: any) {
         console.error('Summary API Error:', error);
-        return NextResponse.json({ error: 'Failed to generate summary' }, { status: 500 });
+        return NextResponse.json({
+            error: 'Failed to generate summary',
+            details: error.message || String(error)
+        }, { status: 500 });
     }
 }
